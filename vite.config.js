@@ -1,7 +1,20 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+// vite.config.js
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue'; // or react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  plugins: [react()],
-  base: '/', // 🔑 VERY important for routing to work on Render
-})
+  plugins: [vue()], // or [react()]
+  server: {
+    port: 3000, // custom dev server port
+    open: true, // auto-open in browser
+  },
+  build: {
+    outDir: 'dist', // output folder
+    sourcemap: true, // generate source maps
+  },
+  resolve: {
+    alias: {
+      '@': '/src', // for easier imports
+    },
+  },
+});
